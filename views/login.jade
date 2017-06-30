@@ -1,0 +1,19 @@
+//
+   Created by crystal on 2017/6/27.
+extends layout
+
+block content
+    form#formlogin(action='/login')
+        div.margin-bottom
+            div.input-group.margin-bottom-sm
+                span.input-group-addon
+                    i.fa.fa-user.fa-fw(aria-hidden='true')
+                input#username.form-control(type='text' placeholder='User' name='usr')
+            div.input-group.margin-bottom-sm
+                span.input-group-addon
+                    i.fa.fa-key.fa-fw(aria-hidden='true')
+                input#password.form-control(type='password' placeholder='Password' name='pws')
+            div.margin-bottom-sm
+                input#btnlogin.button.button-glow.button-rounded.button-raised.button-primary(type='submit' value='Login')
+                input#btnrst.button.button-glow.button-border.button-rounded.button-primary(type='reset' value='reset')
+

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="/login")
+      div.margin-bottom-sm
+          span
+      div.margin-bottom-sm
+          input
+      div
+        button(class="btn btn-primary btn-small") login
