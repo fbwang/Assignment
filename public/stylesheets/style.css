@@ -30,3 +30,22 @@ a {
 #btnlogin{
   margin-right: 10px;
 }
+.navbar-side{
+    width: 20%;
+    float: left;
+    display: inline;
+}
+.nav-second-level{
+    display: none;
+}
+.content{
+    width: 80%;
+    height: 600px;
+    float: right;
+    /*background-color: #00B7FF;*/
+    /*display: inline;*/
+}
+.container{
+    /*display: inline;*/
+}
+

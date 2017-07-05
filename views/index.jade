@@ -1,12 +1,38 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  form(action="/login")
-      div.margin-bottom-sm
-          span
-      div.margin-bottom-sm
-          input
-      div
-        button(class="btn btn-primary btn-small") login
+
+    div.container
+    div
+        nav.navbar-default.navbar-side
+            div.sidebar-collapse.accordion
+                ul.nav
+                    li#dashboard-item
+                        a.active-menu
+                            i.fa.fa-dashboard
+                            | Dashboard
+                    li
+                        a
+                            i.fa.fa-desktop
+                            | UI Element
+                    li
+                        a
+                            i.fa.fa-sitemap
+                            | Chart
+                            span.fa.fa-angle-left.fa-lg
+                        ul.nav.nav-second-level
+                            li
+                                a Pie Chart
+                            li
+                                a Line Chart
+                    li
+                        a
+                            i.fa.fa-table
+                            | Tables
+                    li
+                        a
+                            i.fa.fa-repeat
+                            | Animation
+    div.content
+
+

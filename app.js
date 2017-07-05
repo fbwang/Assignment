@@ -26,6 +26,7 @@ app.use('/static',express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', login);
 app.use('/users', users);
+app.use('/index',index);
 app.use('/login',function (req,res,next) {
     console.log(req.query.usr);
 });
