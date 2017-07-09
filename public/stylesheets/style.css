@@ -35,7 +35,8 @@ a {
   margin-right: 10px;
 }
 .navbar-side{
-    width: 20%;
+    width: 100%;
+    height: 100%;
     float: left;
     display: inline;
 }
@@ -43,17 +44,35 @@ a {
     display: none;
 }
 .content{
-    width: 80%;
-    height: 100%;
-    float: right;
-    /*background-color: #00B7FF;*/
+    width: 82%;
+    /*height: 100%;*/
+    float: left;
+    background-color: #F8F8F8;
     /*display: inline;*/
 }
 .container{
     /*display: inline;*/
     height: 100%;
+    width: 100%;
+    margin: 0;!important;
 }
 .main{
+    height: 100%;
+    width: 100%;
+    /*margin-left: 10px;*/
+    /*margin-right: 10px;*/
+}
+.chart_container{
+    border: solid #cccccc 1px;
+}
+.sidebar{
+    width: 18%;
+    height: 100%;
+    float: left;
+    border: solid #cccccc 1px;
+}
+#geochart{
+    /*height: 420px;*/
     height: 100%;
 }
 
