@@ -17,6 +17,15 @@ $(document).ready(function () {
 
 
         }})
+    });
+    
+    $('#piechart-item').click(function (e) {
+        $.ajax({url:"/index/piecharts/",type:"GET",success:function (data) {
+            $(".content").html(data);
+            google.charts.load('current', {
+                packages: ['corechart', 'treemap', 'geomap', 'gauge', 'table', 'timeline', 'orgchart']});
+            initGalleryPieCharts();
+        }})
     })
 });
 
@@ -902,7 +911,7 @@ function setupData() {
 
 function drawCharts() {
     $('.chart_container').each(function() {
-        console.log($('.chart_container'));
+        // console.log($('.chart_container'));
         var id = $(this).attr('id');
         var chartSpec = chartsData[id];
         if (chartSpec && chartSpec.chart && chartSpec.data && chartSpec.options) {
@@ -912,4 +921,89 @@ function drawCharts() {
             }
         }
     });
+}
+
+function initGalleryPieCharts() {
+    google.charts.setOnLoadCallback(initPieCharts)
+}
+
+function initPieCharts() {
+    $(window).resize(drawCharts);
+    setPieData();
+    drawCharts();
+
+}
+
+function setPieData() {
+    chartsData.piechart = {};
+    chartsData.piechart.data = new google.visualization.DataTable();
+    chartsData.piechart.data.addColumn('string', 'Topping');
+    chartsData.piechart.data.addColumn('number', 'Slices');
+    chartsData.piechart.data.addRows([
+        // ['Task', 'Hours per Day'],
+        ['Work',     11],
+        ['Eat',      2],
+        ['Commute',  2],
+        ['Watch TV', 2],
+        ['Sleep',    7]
+    ]);
+    chartsData.piechart.options ={
+        title: 'My Daily Activities'
+        // height: 400
+    };
+    chartsData.piechart.chart =
+        new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chartsData.threepiechart = {};
+    chartsData.threepiechart.data = chartsData.piechart.data;
+
+    chartsData.threepiechart.options = {
+        title: 'My Daily Activities(3D)',
+        is3D:true
+    };
+
+    chartsData.threepiechart.chart =
+        new  google.visualization.PieChart(document.getElementById('threepiechart'));
+
+
+    chartsData.donut = {};
+    chartsData.donut.data = chartsData.piechart.data;
+    chartsData.donut.options = {
+        title: 'My Daily Activities(Donut)',
+        pieHole: 0.4
+    };
+
+    chartsData.donut.chart =
+        new  google.visualization.PieChart(document.getElementById('donut'));
+
+    chartsData.explod = {};
+    chartsData.explod.data = new google.visualization.DataTable();
+    chartsData.explod.data.addColumn('string', 'Topping');
+    chartsData.explod.data.addColumn('number', 'Slices');
+    chartsData.explod.data.addRows([
+        // ['Language', 'Speakers (in millions)'],
+        ['Assamese', 13], ['Bengali', 83], ['Bodo', 1.4],
+        ['Dogri', 2.3], ['Gujarati', 46], ['Hindi', 300],
+        ['Kannada', 38], ['Kashmiri', 5.5], ['Konkani', 5],
+        ['Maithili', 20], ['Malayalam', 33], ['Manipuri', 1.5],
+        ['Marathi', 72], ['Nepali', 2.9], ['Oriya', 33],
+        ['Punjabi', 29], ['Sanskrit', 0.01], ['Santhali', 6.5],
+        ['Sindhi', 2.5], ['Tamil', 61], ['Telugu', 74], ['Urdu', 52]
+    ]);
+
+    chartsData.explod.options = {
+        title: 'Indian Language Use',
+        legend: 'none',
+        pieSliceText: 'label',
+        slices: {  4: {offset: 0.2},
+            12: {offset: 0.3},
+            14: {offset: 0.4},
+            15: {offset: 0.5}
+        }
+    };
+
+    chartsData.explod.chart =
+        new  google.visualization.PieChart(document.getElementById('explod'));
+
+
 }

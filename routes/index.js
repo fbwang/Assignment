@@ -8,5 +8,8 @@ router.get('/', function(req, res, next) {
 router.get('/dashboard', function(req, res, next) {
     res.render('dashboard');
 });
+router.get('/piecharts', function(req, res, next) {
+    res.render('PieChart');
+});
 
 module.exports = router;
