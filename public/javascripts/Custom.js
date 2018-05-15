@@ -26,7 +26,26 @@ $(document).ready(function () {
                 packages: ['corechart', 'treemap', 'geomap', 'gauge', 'table', 'timeline', 'orgchart']});
             initGalleryPieCharts();
         }})
-    })
+    });
+    $('#linechart-item').click(function (e) {
+        $.ajax({url:"/index/linecharts/",type:"GET",success:function (data) {
+                $(".content").html(data);
+                google.charts.load('current', {
+                    packages: ['corechart', 'treemap', 'geomap', 'gauge', 'table', 'timeline', 'orgchart']});
+                initGalleryPieCharts();
+            }})
+    });
+
+    $('#table-item').click(function (e) {
+        $.ajax({url:"/index/table/",type:"GET",success:function (data) {
+                $(".content").html(data);
+                google.charts.load('current', {
+                    packages: ['corechart', 'treemap', 'geomap', 'gauge', 'table', 'timeline', 'orgchart']});
+                initGalleryTableCharts();
+
+
+            }})
+    });
 });
 
 function generateInitialData(data) {
@@ -1006,4 +1025,18 @@ function setPieData() {
         new  google.visualization.PieChart(document.getElementById('explod'));
 
 
+}
+
+function initGalleryTableCharts() {
+    google.charts.setOnLoadCallback(initTableCharts)
+}
+
+function initTableCharts() {
+    $(window).resize(drawCharts);
+    setTableData();
+    drawCharts();
+}
+
+function setTableData() {
+    
 }

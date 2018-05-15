@@ -11,5 +11,8 @@ router.get('/dashboard', function(req, res, next) {
 router.get('/piecharts', function(req, res, next) {
     res.render('PieChart');
 });
+router.get('/table', function(req, res, next) {
+    res.render('Table');
+});
 
 module.exports = router;
